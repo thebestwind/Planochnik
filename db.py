@@ -5,8 +5,8 @@ from config import DB_NAME
 
 script_path = pathlib.Path(sys.argv[0]).parent  # Абсолютный путь до каталога, где лежит скрипт
 conn = sqlite3.connect(script_path /  DB_NAME)
-#создание и наполнение таблиц
 
+#создание и наполнение таблиц
 def get_connection():
     return sqlite3.connect(script_path / DB_NAME)
 
