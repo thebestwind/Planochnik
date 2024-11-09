@@ -18,7 +18,7 @@ def send_welcome(message):
     us_username = message.from_user.username
     us_name = message.from_user.first_name
     us_sname = message.from_user.last_name
-    db_table_val(username=us_username, user_name=us_name, user_surname=us_sname)
+    db_table_val(username=us_username, user_name=us_name, user_surname=us_sname, conn=None)
     bot.reply_to(message, "Время подкачаться! \nВведи количество упражнений. От 1 до 10")
 
 
@@ -51,7 +51,7 @@ def get_pics(values2, message):
             print(f"Ошибка при отправке изображения: {e}")
             error = True
             continue
-    if error == True:
+    if error:
         bot.reply_to(message, 'Повртори попытку через 5 минут. Телеграму не понравилось, что ты получил много сообщений')
     conn.close()
 

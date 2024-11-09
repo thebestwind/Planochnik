@@ -37,4 +37,3 @@ def workouts_db_update(values, number, username, conn):
         item = str(*item)
         cursor.execute('INSERT INTO workouts (drillName, people, date) VALUES (?, ?, ?)',(item, username, datetime.now()))
         conn.commit()
-    conn.close()

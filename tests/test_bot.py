@@ -23,4 +23,4 @@ def test_start_command(mock_bot):
     send_welcome(message)
 
     # Проверяем, что бот отправляет правильный ответ
-    mock_bot.reply_to.assert_called_once_with(message, "Время подкачаться! Введи количество упражнений. От 1 до 10")
+    mock_bot.reply_to.assert_called_once_with(message, "Время подкачаться! \nВведи количество упражнений. От 1 до 10")

@@ -9,7 +9,7 @@ conn = sqlite3.connect(script_path /  DB_NAME)
 #создание и наполнение таблиц
 def get_connection():
     return sqlite3.connect(script_path / DB_NAME)
-
+#создание таблиц для записей бота
 def create_tables():
     conn = get_connection()
     cursor = conn.cursor()
@@ -18,7 +18,7 @@ def create_tables():
     cursor.execute('CREATE TABLE IF NOT EXISTS people (peopleID INTEGER PRIMARY KEY AUTOINCREMENT, t_id varchar(50), surname varchar(50), name varchar(50))')
     conn.commit()
     conn.close()
-
+#наполнение таблиц упражнениями
 def insert_default_drills():
     conn = get_connection()
     cursor = conn.cursor()
@@ -33,13 +33,18 @@ def insert_default_drills():
         )
     conn.commit()
     conn.close()
-
-def db_table_val(username: str, user_name: str, user_surname: str):
-    conn = get_connection()
+#запись пользователя в бд при обращении, если его еще нет
+def db_table_val(username: str, user_name: str, user_surname: str, conn: bool):
+    own_connection = False
+    if conn is None:
+        conn = get_connection()
+        own_connection = True
     cursor = conn.cursor()
     cursor.execute("SELECT t_id FROM people WHERE t_id == ?", (username,))
     catch = cursor.fetchone()
     if catch is None:
         cursor.execute('INSERT INTO people (t_id, name, surname) VALUES (?, ?, ?)', (username, user_name, user_surname))
         conn.commit()
-    conn.close()
+        # Закрываем соединение, если оно было создано внутри этой функции
+    if own_connection:
+            conn.close()
