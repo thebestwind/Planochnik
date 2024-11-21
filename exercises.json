@@ -1,0 +1,186 @@
+[
+    {
+        "drillName": "Russian twist",
+        "type": "остальные"
+    },
+    {
+        "drillName": "Dead bug",
+        "type": "остальные"
+    },
+    {
+        "drillName": "Dead bug + отягощение в каждой руке",
+        "type": "остальные"
+    },
+    {
+        "drillName": "Dead bug arm hold (в руках отягощение держать в статике, ноги работают в обычном режиме)",
+        "type": "остальные"
+    },
+    {
+        "drillName": "Dead bug + band (в руках резина держать в статике или в динамике, ноги работают в обычном режиме)",
+        "type": "остальные"
+    },
+    {
+        "drillName": "Dead bug + legs hold band ( руки в обычном режиме, ноги согнуты под 90 градусов в колене и тзб и в натяжение держать резину)",
+        "type": "остальные"
+    },
+    {
+        "drillName": "Hip thrust",
+        "type": "остальные"
+    },
+    {
+        "drillName": "Hip thrust leg change ",
+        "type": "остальные"
+    },
+    {
+        "drillName": "Hollow body",
+        "type": "остальные"
+    },
+    {
+        "drillName": "Bird dog",
+        "type": "планки"
+    },
+    {
+        "drillName": "Shoulder touch plank",
+        "type": "планки"
+    },
+    {
+        "drillName": "Arm raise plank",
+        "type": "планки"
+    },
+    {
+        "drillName": "Plank saw",
+        "type": "планки"
+    },
+    {
+        "drillName": "Bear walk",
+        "type": "планки"
+    },
+    {
+        "drillName": "Lateral bear walk",
+        "type": "планки"
+    },
+    {
+        "drillName": "Crab walk",
+        "type": "планки"
+    },
+    {
+        "drillName": "Spiderman walk",
+        "type": "планки"
+    },
+    {
+        "drillName": "Plank jack",
+        "type": "планки"
+    },
+    {
+        "drillName": "Plank in and out (ип планка на прямых руках, постановка рук на ширине плеч, руками выполняем движение наружу, потом внутрь)",
+        "type": "планки"
+    },
+    {
+        "drillName": "Mountain Climber plank",
+        "type": "планки"
+    },
+    {
+        "drillName": "Hip raise plank",
+        "type": "планки"
+    },
+    {
+        "drillName": "Leg raise plank",
+        "type": "планки"
+    },
+    {
+        "drillName": "Hip drop plank",
+        "type": "планки"
+    },
+    {
+        "drillName": "Spiderman plank",
+        "type": "планки"
+    },
+    {
+        "drillName": "Push up plank",
+        "type": "планки"
+    },
+    {
+        "drillName": "Plank (обычная на предплечьях)",
+        "type": "планки"
+    },
+    {
+        "drillName": "Plank (на прямых руках)",
+        "type": "планки"
+    },
+    {
+        "drillName": "Standing walkout plank",
+        "type": "планки"
+    },
+    {
+        "drillName": "Side plank",
+        "type": "боковые"
+    },
+    {
+        "drillName": "Side plank rotation",
+        "type": "боковые"
+    },
+    {
+        "drillName": "Side plank rotation + отягощение",
+        "type": "боковые"
+    },
+    {
+        "drillName": "Side plank star",
+        "type": "боковые"
+    },
+    {
+        "drillName": "Side plank kick",
+        "type": "боковые"
+    },
+    {
+        "drillName": "Side plank crunch",
+        "type": "боковые"
+    },
+    {
+        "drillName": "Side plank roll",
+        "type": "боковые"
+    },
+    {
+        "drillName": "side plank leg raise",
+        "type": "боковые"
+    },
+    {
+        "drillName": "Side plank leg raise band (маленькая резинка на голеностоп)",
+        "type": "боковые"
+    },
+    {
+        "drillName": "Side plank knee tuck + band",
+        "type": "боковые"
+    },
+    {
+        "drillName": "Side plank knee tuck+ band ( то же самое только в статике держать согнутую в колене ногу с натяжением резины)",
+        "type": "боковые"
+    },
+    {
+        "drillName": "Copenhagen plank",
+        "type": "боковые"
+    },
+    {
+        "drillName": "Superman plank",
+        "type": "суперсмены"
+    },
+    {
+        "drillName": "Superman roll",
+        "type": "суперсмены"
+    },
+    {
+        "drillName": "Superman VTW",
+        "type": "суперсмены"
+    },
+    {
+        "drillName": "Superman VA",
+        "type": "суперсмены"
+    },
+    {
+        "drillName": "Superman hold",
+        "type": "суперсмены"
+    },
+    {
+        "drillName": "Superman lat pull-down resistance band",
+        "type": "суперсмены"
+    }
+]

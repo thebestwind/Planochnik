@@ -26,7 +26,6 @@ def get_drills(conn, number, username):
                 values.append(val1)
             else:
                 print(f"Нет доступных упражнений для категории {type}")
-
     return values
 
  #обновление бд сделанных упражнений

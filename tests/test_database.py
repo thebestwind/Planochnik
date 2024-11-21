@@ -37,9 +37,9 @@ def test_insert_default_drills_no_duplicates(temp_drills_db): #проверка,
     assert count_after_first == count_after_second
 
 
-def test_insert_default_drills_data_integrity(temp_db): #проверка, что таблица наполнилась верными данными
-    insert_default_drills(temp_db)
-    cursor = temp_db.cursor()
+def test_insert_default_drills_data_integrity(temp_drills_db): #проверка, что таблица наполнилась верными данными
+    insert_default_drills(temp_drills_db)
+    cursor = temp_drills_db.cursor()
     cursor.execute("SELECT drillName, type FROM drills")
     rows = cursor.fetchall()
     expected_data = [

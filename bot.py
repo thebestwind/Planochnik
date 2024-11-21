@@ -1,6 +1,9 @@
-from db import create_tables, insert_default_drills
-from handlers import bot
-from db import conn
+from globals import bot
+from db import create_tables, insert_default_drills,conn
+import handlers
+
+
+
 if __name__ == "__main__":
     create_tables()
     insert_default_drills(conn)
