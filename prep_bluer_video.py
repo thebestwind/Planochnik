@@ -1,8 +1,11 @@
+from moviepy.audio.AudioClip import concatenate_audioclips, CompositeAudioClip
 from moviepy.video.compositing.concatenate import concatenate_videoclips
 from moviepy.video.fx.resize import resize
 from moviepy.video.VideoClip import TextClip
 from moviepy.video.compositing.CompositeVideoClip import CompositeVideoClip
 from moviepy.video.io.VideoFileClip import VideoFileClip
+from moviepy.audio.io.AudioFileClip import AudioFileClip
+from moviepy.audio.AudioClip import AudioClip
 import os
 from create_video import create_blurred_clip
 from db import get_drill_name
@@ -49,7 +52,7 @@ def process_missing_files(original_dir, prep_dir, duration):
         except Exception as e:
             print(f"Ошибка при обработке {file_name}: {e}")
 
-
+# создание предподготоленных клипов для видео
 def create_clip_with_text(
         input_video_path, output_video_path, num_of_drill, target_height=720, duration=5
 ):
@@ -111,8 +114,20 @@ def create_clip_with_text(
         # Объединяем размытую версию с текстом и основным видео
         composite_clip = CompositeVideoClip([resized_video_clip.set_position("center"), text_clip, countdown_clip])
 
+        # вставка аудиофайла в ролик
+        end_audio = AudioFileClip(end_audio_path).subclip(0, min(4, looped_clip.duration))
+        # Если у видео отсутствует аудио, создаём тишину с той же длительностью
+        if video_clip.audio is None:
+            silence_audio = AudioClip(lambda t: 0, duration=looped_clip.duration)
+        else:
+            silence_audio = video_clip.audio.set_duration(looped_clip.duration)
+
+        # Перекрываем аудиофайл поверх основного звука
+        final_audio = CompositeAudioClip([silence_audio, end_audio.set_start(looped_clip.duration - 4)])
+        composite_clip = composite_clip.set_audio(final_audio)
+
         # Сохраняем результат
-        composite_clip.write_videofile(output_video_path, fps=24)
+        composite_clip.write_videofile(output_video_path, fps=24, audio_codec="aac")
 
     finally:
         # Закрываем клипы для освобождения памяти
@@ -124,16 +139,17 @@ def create_clip_with_text(
             blurred_clip.close()
         if composite_clip:
             composite_clip.close()
-
+        if end_audio:
+            end_audio.close()
 
 # проверка использования
-# if __name__ == "__main__":
-#     input_path = "example.mp4"
-#     output_path = "blurred_with_text.mp4"
-#     create_clip_with_text(
-#         input_video_path="drills/2.mp4",
-#         output_video_path="drill25_clips_dir/prep_2.mp4",
-#         num_of_drill=3,
-#         target_height=720,
-#         duration= 25
-#     )
+if __name__ == "__main__":
+    input_path = "example.mp4"
+    output_path = "blurred_with_text.mp4"
+    create_clip_with_text(
+        input_video_path="drills/2.mp4",
+        output_video_path="drill25_clips_dir/prep_2.mp4",
+        num_of_drill=3,
+        target_height=720,
+        duration= 5
+    )
