@@ -1,4 +1,5 @@
 from telebot import types
+from config import *
 from create_video import get_pics
 from db import db_table_val, get_connection
 from utils import get_drills, workouts_db_update
@@ -49,7 +50,7 @@ def choose_exercise_count(call):
     bot.send_message(user_id, "Теперь выбери время на одно упражнение:")
     time_markup = types.InlineKeyboardMarkup(row_width=5)
     time_buttons = [types.InlineKeyboardButton(text=f"{time} сек", callback_data=f"time_{number_of_drills}_{time}")
-                    for time in [25, 35, 45, 55]]
+                    for time in time_of_drill[1:]]
     time_markup.add(*time_buttons)
     bot.send_message(user_id, "Сколько секунд для каждого упражнения?", reply_markup=time_markup)
 

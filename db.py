@@ -56,3 +56,19 @@ def db_table_val(username: str, user_name: str, user_surname: str, conn: bool):
         conn.commit()
     if own_connection:
             conn.close()
+
+#получить урпажнение по номеру
+def get_drill_name(number_of_drill):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT drillName FROM drills WHERE drillID = ?", (number_of_drill,))
+    name_of_drill = cursor.fetchone()[0]
+    return name_of_drill
+
+#посчитать количество упражнений в бд drills
+def drills_count():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT count(drillName) FROM drills")
+    drills_amount = int(cursor.fetchone())
+    return drills_amount

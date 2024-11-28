@@ -8,19 +8,19 @@
         "type": "остальные"
     },
     {
-        "drillName": "Dead bug + отягощение в каждой руке",
+        "drillName": "Dead bug, отягощение в каждой руке",
         "type": "остальные"
     },
     {
-        "drillName": "Dead bug arm hold (в руках отягощение держать в статике, ноги работают в обычном режиме)",
+        "drillName": "Dead bug arm hold",
         "type": "остальные"
     },
     {
-        "drillName": "Dead bug + band (в руках резина держать в статике или в динамике, ноги работают в обычном режиме)",
+        "drillName": "Dead bug, band",
         "type": "остальные"
     },
     {
-        "drillName": "Dead bug + legs hold band ( руки в обычном режиме, ноги согнуты под 90 градусов в колене и тзб и в натяжение держать резину)",
+        "drillName": "Dead bug, legs hold band",
         "type": "остальные"
     },
     {
@@ -72,7 +72,7 @@
         "type": "планки"
     },
     {
-        "drillName": "Plank in and out (ип планка на прямых руках, постановка рук на ширине плеч, руками выполняем движение наружу, потом внутрь)",
+        "drillName": "Plank in and out",
         "type": "планки"
     },
     {
@@ -144,15 +144,15 @@
         "type": "боковые"
     },
     {
-        "drillName": "Side plank leg raise band (маленькая резинка на голеностоп)",
+        "drillName": "Side plank leg raise band",
         "type": "боковые"
     },
     {
-        "drillName": "Side plank knee tuck + band",
+        "drillName": "Side plank knee tuck, band",
         "type": "боковые"
     },
     {
-        "drillName": "Side plank knee tuck+ band ( то же самое только в статике держать согнутую в колене ногу с натяжением резины)",
+        "drillName": "Side plank knee tuck+ band",
         "type": "боковые"
     },
     {
