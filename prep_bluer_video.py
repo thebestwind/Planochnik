@@ -14,12 +14,6 @@ def ensure_directory_exists(file_path):
     print("chek dirrr", directory)
     if directory and not os.path.exists(directory):
         os.makedirs(directory)
-# def normalize_resolution(clip): #Принудительно округляет размеры видео до ближайших четных значений.
-#     width, height = clip.size
-#     normalized_width = (width // 2) * 2
-#     normalized_height = (height // 2) * 2
-#     print(f"Оригинальные размеры: {width}x{height}, нормализованные размеры: {normalized_width}x{normalized_height}")
-#     return clip.resize(width=normalized_width, height=normalized_height)
 
 # Находим файлы из original_dir, которых нет в prep_dir
 def get_missing_files(original_dir, prep_dir):
@@ -65,11 +59,8 @@ def create_clip_with_text(
     composite_clip = None
 
     try:
-        # # Проверяем и создаем директорию, если она не существует
-        # ensure_directory_exists(output_video_path)
         # Загружаем исходное видео
         video_clip = VideoFileClip(input_video_path)
-        # video_clip = normalize_resolution(video_clip)
 
         # Устанавливаем длительность
         if video_clip.duration < duration:
@@ -77,9 +68,6 @@ def create_clip_with_text(
             looped_clip = concatenate_videoclips([video_clip] * repeat_count).subclip(0, duration)
         else:
             looped_clip = video_clip.subclip(0, duration)
-
-        # Размываем видео
-
 
         # Изменяем размер основного видео
         resized_video_clip = looped_clip.fx(resize, height=target_height)
@@ -138,15 +126,14 @@ def create_clip_with_text(
             composite_clip.close()
 
 
-
 # проверка использования
-if __name__ == "__main__":
-    input_path = "example.mp4"
-    output_path = "blurred_with_text.mp4"
-    create_clip_with_text(
-        input_video_path="drills/2.mp4",
-        output_video_path="drill25_clips_dir/prep_2.mp4",
-        num_of_drill=3,
-        target_height=720,
-        duration= 25
-    )
+# if __name__ == "__main__":
+#     input_path = "example.mp4"
+#     output_path = "blurred_with_text.mp4"
+#     create_clip_with_text(
+#         input_video_path="drills/2.mp4",
+#         output_video_path="drill25_clips_dir/prep_2.mp4",
+#         num_of_drill=3,
+#         target_height=720,
+#         duration= 25
+#     )

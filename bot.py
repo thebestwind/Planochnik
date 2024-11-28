@@ -9,10 +9,5 @@ if __name__ == "__main__":
     insert_default_drills(conn)
     for dur in time_of_drill:
         process_missing_files(original_video_dir, f"drill{dur}_clips_dir", dur)
-    # process_missing_files(original_video_dir, prep_video_dir, 5)
-    # process_missing_files(original_video_dir, drill25_clips_dir, 25)
-    # process_missing_files(original_video_dir, drill35_clips_dir, 35)
-    # process_missing_files(original_video_dir, drill45_clips_dir, 45)
-    # process_missing_files(original_video_dir, drill55_clips_dir, 55)
     bot.polling(none_stop=True)
 
