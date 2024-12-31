@@ -25,6 +25,9 @@ def get_missing_files(original_dir, prep_dir):
     original_files = set(os.listdir(original_dir))
     prep_files = set(os.listdir(prep_dir))
     missing_files = original_files - prep_files
+    # Исключаем системные файлы и файлы без видеоформатов
+    video_extensions = {'.mp4', '.avi', '.mov'}  # Добавьте нужные форматы
+    missing_files = [f for f in missing_files if os.path.splitext(f)[1].lower() in video_extensions]
     return list(missing_files)
 
 # Обрабатывает недостающие файлы
@@ -114,16 +117,26 @@ def create_clip_with_text(
         # Объединяем размытую версию с текстом и основным видео
         composite_clip = CompositeVideoClip([resized_video_clip.set_position("center"), text_clip, countdown_clip])
 
-        # вставка аудиофайла в ролик
-        end_audio = AudioFileClip(end_audio_path).subclip(0, min(4, looped_clip.duration))
-        # Если у видео отсутствует аудио, создаём тишину с той же длительностью
-        if video_clip.audio is None:
-            silence_audio = AudioClip(lambda t: 0, duration=looped_clip.duration)
-        else:
-            silence_audio = video_clip.audio.set_duration(looped_clip.duration)
 
-        # Перекрываем аудиофайл поверх основного звука
-        final_audio = CompositeAudioClip([silence_audio, end_audio.set_start(looped_clip.duration - 4)])
+        # Загрузка аудиофайла
+        end_audio = AudioFileClip(end_audio_path)
+
+        # Ограничиваем длительность аудиофайла, чтобы она не превышала длительность видео
+        end_audio = end_audio.subclip(0, min(looped_clip.duration, end_audio.duration))
+
+        # Если у видео отсутствует аудио, создаём тишину с той же длительностью
+        # if video_clip.audio is None:
+        #     silence_audio = AudioClip(lambda t: 0, duration=looped_clip.duration).set_duration(looped_clip.duration)
+        # else:
+        #     silence_audio = video_clip.audio.set_duration(looped_clip.duration)
+
+        silence_audio = AudioClip(lambda t: 0, duration=looped_clip.duration).set_duration(looped_clip.duration)
+
+        # Установка нового аудиотрека в конец
+        final_audio = CompositeAudioClip(
+            [silence_audio, end_audio.set_start(looped_clip.duration - end_audio.duration+0.5)])
+
+        # Установка аудиотрека для клипа
         composite_clip = composite_clip.set_audio(final_audio)
 
         # Сохраняем результат

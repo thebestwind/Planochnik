@@ -5,6 +5,7 @@ load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 end_audio_path = "end_audio.mp3"
 DB_NAME = "planochnikDB3.sql"
+
 time_of_drill = [5, 25, 35, 45, 55]
 original_video_dir = "drills"
 
